@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Preview Exercise</title>
+    <style>
+        #image {
+            width: 400px;
+            height: 300px;
+            border: 2px solid black;
+            text-align: center;
+            line-height: 300px;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+        }
+        .preview {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Div to display text and background -->
+<div id="image">Hover over an image below to display here.</div>
+
+<!-- Preview images -->
+<img class="preview" src="Red.WEBP" alt="Red Image" onmouseover="upDate(this)" onmouseout="undo()">
+<img class="preview" src="Green.WEBP" alt="Green Image" onmouseover="upDate(this)" onmouseout="undo()">
+<img class="preview" src="Blue.WEBP" alt="Blue Image" onmouseover="upDate(this)" onmouseout="undo()">
+
+<script>
+// Function to handle hover over image
+function upDate(previewPic) {
+    console.log("Event triggered!");
+    console.log("ALT: " + previewPic.alt);
+    console.log("SRC: " + previewPic.src);
+
+    // Change text of #image div
+    document.getElementById('image').innerHTML = previewPic.alt;
+
+    // Change background image of #image div
+    document.getElementById('image').style.backgroundImage = "url('" + previewPic.src + "')";
+}
+
+// Function to reset text and background
+function undo() {
+    document.getElementById('image').innerHTML = "Hover over an image below to display here.";
+    document.getElementById('image').style.backgroundImage = "url('')";
+}
+</script>
+
+</body>
+</html>
